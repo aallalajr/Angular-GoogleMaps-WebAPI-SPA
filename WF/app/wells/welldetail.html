@@ -1,0 +1,54 @@
+﻿<section id="welldetail-view" class="mainbar" data-ng-controller="welldetail as vm">
+    <section class="matter">
+        <div class="container-fluid">
+            <div>
+                <button class="btn btn-info" data-ng-click="vm.goBack()">
+                    <i class="fa fa-backward"></i>Back
+                </button>
+                <button class="btn btn-info" data-ng-click="vm.cancel()">
+                    <i class="fa fa-undo"></i>Cancel
+                </button>
+                <button class="btn btn-info" data-ng-click="vm.save()" data-ng-disabled="!vm.canSave">
+                    <i class="fa fa-save"></i>Save
+                </button>
+                <button class="btn btn-info" data-ng-click="vm.deleteWell()">
+                    <i class="fa fa-eraser"></i>Delete
+                </button>
+            </div>
+
+            <div class="col-md-6 ">
+                <div class="widget wgreen">
+                    <div data-cc-widget-header 
+                        title="Edit {{vm.well.Name || 'New Well'}}"></div>
+                    <div class="widget-content">
+                        <div>
+                            <label>Well Name</label><br/>
+                            <input data-ng-model="vm.well.Name"
+                                   placeholder="Well Name"/>
+                        </div>
+                        <div>
+                            <label>Latitude</label><br/>
+                            <input data-ng-model="vm.well.Latitude"
+                                   placeholder="Latitude"/>
+                        </div>
+                        <div>
+                            <label>Longitude</label><br/>
+                            <input data-ng-model="vm.well.Longitude"
+                                   placeholder="Longitude"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="widget wgreen">
+                    <div data-cc-widget-header title="{{vm.map.title}}"
+                         allow-collapse="true"></div>
+                    <div class="widget-content">
+                        <div id="well-detail-map-canvas" style=" height: 400px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>

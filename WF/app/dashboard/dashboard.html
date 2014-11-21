@@ -1,0 +1,70 @@
+﻿<section id="dashboard-view" class="mainbar" data-ng-controller="dashboard as vm">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="today-datas">
+                        <li class="blightblue">
+                            <div class="pull-left"><i class="fa fa-compass"></i></div>
+                            <div class="datas-text pull-right">
+                                <span class="bold">{{vm.wells.length}}</span> Wells
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="widget wblue">
+                        <div data-cc-widget-header title="Wells"
+                             subtitle="{{(vm.wells | filter:vm.search).length}}/{{vm.wells.length}}"
+                             allow-collapse="true"></div>
+                        <div class="widget-content text-center text-info">
+                            <div class="form-search pull-left">
+                                <input class="input-sm search-query" data-ng-model="vm.search" 
+                                       placeholder="Search name or coordinates" autofocus/>
+                            </div>
+                            
+                            <div class="form-search pull-right">
+                                <a class="btn btn-info" href="#/well/new">
+                                    <i class="fa fa-plus"></i><span>Add Well</span></a>
+                            </div>
+
+                            <table class="table table-condensed table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Well Name</th>
+                                        <th>Latitude</th>
+                                        <th>Longitude</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-ng-repeat="w in vm.wells | filter:vm.search">
+                                        <td>{{w.Name}}</td>
+                                        <td>{{w.Latitude}}</td>
+                                        <td>{{w.Longitude}}</td>
+                                        <td><i class="fa fa-edit pointer" title="Go to Well Details" 
+                                               data-ng-click="vm.gotoWell(w)"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="widget-foot">
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="widget wblue">
+                        <div data-cc-widget-header title="Location" allow-collapse="true"></div>
+                        <div class="widget-content">
+                            <div id="dashboard-map-canvas" style=" height: 400px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
